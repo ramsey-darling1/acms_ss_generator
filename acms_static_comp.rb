@@ -16,19 +16,21 @@ def acms_comp(url,src)
             subpages << Net::HTTP.get(sub_uri)
        end
    end
-   #write main file
-   File.open(src,'w') do |f|
-      f.write(res) 
-   end
    #write subpages
    if subpages.count > 0
        count = 0
        subpages.each do |subpage|
-           File.open("subpages/subpage-#{count}.html",'w') do |sf|
+           sub_file = "subpages/subpage-#{count}.html"
+            #TO DO: replace link in href of main file to subpages
+           File.open(sub_file,'w') do |sf|
                sf.write(subpage)
            end
            count += 1
        end
+   end
+   #write main file
+   File.open(src,'w') do |f|
+      f.write(res) 
    end
 end
 
