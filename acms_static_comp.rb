@@ -3,6 +3,7 @@
 #@rdar
 
 require 'net/http'
+require 'oga'
 
 def acms_comp(url,src)
    subpages = []
